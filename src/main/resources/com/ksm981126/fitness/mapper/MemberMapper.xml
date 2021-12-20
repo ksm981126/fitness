@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ksm981126.fitness.mapper.MemberMapper">
+<select id="getMemberInfo" resultType="com.ksm981126.fitness.data.MemberVo">
+        select * from member_info where mi_name like #{keyword}
+        order by mi_seq desc
+        limit 10 offset #{offset}
+    </select>
+    <select id="getMemberCount" resultType="java.lang.Integer">
+        select count(*) from member_info where mi_name like #{keyword}
+    </select>
+    <insert id="addMember">
+        insert into member_info(
+            mi_name,mi_birth,mi_gen,mi_phone_num,mi_address
+        ,mi_start_dt,mi_end_dt,mi_pt_option,mi_locker_option)
+        values
+        (#{mi_name},#{mi_birth},#{mi_gen},#{mi_phone_num},#{mi_address}
+        ,#{mi_start_dt},#{mi_end_dt},#{mi_pt_option},#{mi_locker_option})
+    </insert>
+    <delete id="deleteMember">
+        delete from member_info where mi_seq=#{seq}
+    </delete>
+    <select id="getMemberInfoBySeq" resultType="com.ksm981126.fitness.data.MemberVo">
+        select * from member_info where mi_seq =#{seq}
+    </select>
+    <update id="updateMember">
+        update member_info
+        set mi_name=#{mi_name},mi_birth=#{mi_birth},mi_gen=#{mi_gen},mi_phone_num=#{mi_phone_num},mi_address=#{mi_address},mi_pt_option=#{mi_pt_option},mi_locker_option=#{mi_locker_option},mi_start_dt=#{mi_start_dt},mi_end_dt=#{mi_end_dt}
+        where mi_seq=#{mi_seq}
+    </update>
+    <select id="selectLatesDataSeq" resultType="java.lang.Integer">
+        select mi_seq from member_info
+        order by mi_seq desc limit 1
+    </select>
+    <insert id="insertMemberHistory">
+    INSERT INTO fitness_club_db.member_history
+        (mh_type, mh_content,mh_mi_seq)
+    VALUES
+        (#{mh_type},#{mh_content},#{mh_mi_seq});
+    </insert>
+    <select id="getMemberByKeyword" resultType="com.ksm981126.fitness.data.MemberVo">
+        select mi_seq,mi_name,mi_birth,mi_gen,mi_phone_num,mi_address,mi_start_dt,mi_end_dt,mi_pt_option,mi_locker_option from member_info where mi_name like #{keyword}
+    </select>
+</mapper>
