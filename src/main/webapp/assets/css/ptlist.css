@@ -1,14 +1,14 @@
 /* department_list */
 main{background-color: #f7f7f7; position: relative;}
 main > h1 {font-size: 36px; margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid #ddd;}
-#add_member {
+#add_ptlist {
     position: absolute; right: 35px; top: 30px;
     border: 0; background-color: #999; color: #fff;
     width: 170px; height: 40px; border-radius: 5px; font-size: 15x;  font-weight: 300;
     cursor: pointer; /*border-radius 테두리를 둥글게 만들어준다*/
 }
-#add_member i{margin-right: 5px;}
-#add_member:hover {background-color: #333;} /* hover 마우스 올렸을 때 색이 변함*/
+#add_ptlist i{margin-right: 5px;}
+#add_ptlist:hover {background-color: #333;} /* hover 마우스 올렸을 때 색이 변함*/
 .search_box{background-color: #fff; display: inline-block; vertical-align: middle;
 padding: 10px 20px; border-radius: 99px; margin-right: 20px;
 }
@@ -72,22 +72,16 @@ font-size: 20; cursor: pointer;}
 .popup .top_area h2 {margin-top: 20px; font-size: 24px;}
 .popup .top_area p {margin-top:10px; color: #555;}
 
-.popup .content_area {padding: 40px 0; width: 350px; margin:0 auto; font-size: 0;
+.popup .content_area {padding: 40px 0; width: 350px; margin: 0 auto; font-size: 0;
     padding-bottom: 20px;
 }
-#mi_name, #mi_birth, #mi_gen,#mi_phone_num,#mi_address,#mi_pt_option,#mi_locker_option,#mi_start_dt,#mi_end_dt
+#pi_name, #pi_ti_seq, #pi_ti_name,#pi_status,#pi_time,#pi_start_dt,#pi_end_dt
 {width: 90%; padding: 0; margin: 0; border: 1px solid #ccc;
     font-size: 16px; font-weight: 400; padding: 10px 20px; box-sizing: border-box;
     border-radius: 50px; margin-bottom: 15px;
 }
 /* #mi_birth {width: 100px; border-radius: 15px 0 0 15px;} */
-#mi_gen {width: 100px; border-radius:50px; 
-    padding: 9px 20px;
-}
-#mi_pt_option {width: 150px; border-radius: 50px; 
-    padding: 9px 20px;
-}
-#mi_locker_option {width: 170px; border-radius: 50px;
+#pi_status {width: 140px; border-radius: 50px;
     padding: 9px 20px;
 }
 
@@ -104,3 +98,8 @@ font-size: 20; cursor: pointer;}
 .btn_area #modify_dep:hover {background-color: #333;}
 .btn_area #cancel_dep {background-color:rgb(255,194,194);}
 .btn_area #cancel_dep:hover {background-color: rgb(255,83,83);}
+
+.pt_status span{
+    display: inline-block; padding: 5px 10px; color: #fff;font-size: 14px; font-weight: 400;
+    border-radius: 3px;
+}

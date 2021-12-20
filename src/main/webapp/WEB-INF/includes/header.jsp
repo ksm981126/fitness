@@ -24,9 +24,9 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="main_menu">
                 <a href="/main"><i class="fas fa-school"></i>회원 관리</a>
-                <a href="#"><i class="fas fa-user-tie"></i>강사 관리</a>
-                <a href="#"><i class="fas fa-user-graduate"></i>수업 관리</a>
-                <a href="#"><i class="fas fa-chalkboard-teacher"></i>PT회원 관리</a>
+                <a href="/trainer"><i class="fas fa-user-tie"></i>강사 관리</a>
+                <a href="/ptlist"><i class="fas fa-chalkboard-teacher"></i>PT수업 관리</a>
+                <a href="#"><i class="fas fa-user-graduate"></i>PT회원 관리</a>
             </div>
         </div>
     </header>

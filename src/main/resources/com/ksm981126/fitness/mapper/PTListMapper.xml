@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ksm981126.fitness.mapper.PTListMapper">
+<select id="getPTListInfo" resultType="com.ksm981126.fitness.data.PTListVo">
+        select * from pt_info where pi_name like #{keyword}
+        order by pi_seq desc
+        limit 10 offset #{offset}
+    </select>
+    <select id="getPTListCount" resultType="java.lang.Integer">
+        select count(*) from pt_info where pi_name like #{keyword}
+    </select>
+    <insert id="addPTList">
+    insert into pt_info(
+            pi_name,pi_ti_seq,pi_ti_name,pi_time,pi_start_dt,pi_end_dt,pi_status)
+        values
+        (#{pi_name},#{pi_ti_seq},#{pi_ti_name},#{pi_time},
+            #{pi_start_dt},#{pi_end_dt},#{pi_status})
+    </insert>
+    <delete id="deletePTList">
+        delete from pt_info where pi_seq=#{seq}
+    </delete>
+    <select id="getPTListInfoBySeq" resultType="com.ksm981126.fitness.data.PTListVo">
+        select * from pt_info where pi_seq =#{seq}
+    </select>
+    <update id="updatePTList">
+        update pt_info
+        set pi_name=#{pi_name},pi_ti_seq=#{pi_ti_seq},pi_ti_name=#{pi_ti_name},pi_time=#{pi_time},pi_start_dt=#{pi_start_dt},pi_end_dt=#{pi_end_dt},pi_status=#{pi_status}
+        where pi_seq=#{pi_seq}
+    </update>
+</mapper>
