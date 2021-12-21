@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ksm981126.fitness.mapper.DashboardMapper">
+<select id="getTotalMemberCnt" resultType="java.lang.Integer">
+        select count(*) from member_info
+    </select>
+    <select id="getPToptionMemberCnt" resultType="java.lang.Integer">
+        select count(*) from member_info where mi_pt_option=1
+    </select>
+    <select id="getLockerMemberCnt" resultType="java.lang.Integer">
+        select count(*) from member_info where mi_locker_option=1
+    </select>
+    
+    <select id="getTotalTrainerCnt" resultType="java.lang.Integer">
+        select count(*) from trainer_info
+    </select>
+    <select id="getWorkTrainerCnt" resultType="java.lang.Integer">
+        select count(*) from trainer_info where ti_status=1
+    </select>
+    <select id="getDayoffTrainerCnt" resultType="java.lang.Integer">
+        select count(*) from trainer_info where ti_status=0
+    </select>
+
+    <select id="getTotalPTCnt" resultType="java.lang.Integer">
+        select count(*) from pt_info
+    </select>
+    <select id="getActivePTCnt" resultType="java.lang.Integer">
+        select count(*) from pt_info where pi_status=1
+    </select>
+    <select id="getDeactivePTCnt" resultType="java.lang.Integer">
+        select count(*) from pt_info where pi_status=2
+    </select>
+    <select id="getFinishPTCnt" resultType="java.lang.Integer">
+        select count(*) from pt_info where pi_status=3
+    </select>
+
+    <select id="getTotalPTmemberCnt" resultType="java.lang.Integer">
+        select count(*) from pt_member_info
+    </select>
+    <!-- <select id="getActivePTmemberCnt" resultType="java.lang.Integer">
+        select count(*) from course_subject_info where csi_status=1
+    </select>
+    <select id="getDeactivePTmemberCnt" resultType="java.lang.Integer">
+        select count(*) from course_subject_info where csi_status=2
+    </select>
+    <select id="getFinishPTmemberCnt" resultType="java.lang.Integer">
+        select count(*) from course_subject_info where csi_status=0
+    </select> -->
+
+    <select id="getMemberUpdateDate" resultType="java.util.Date">
+        select mh_reg_dt from member_history order by mh_reg_dt desc limit 1
+    </select>
+    <select id="getPTListUpdateDate" resultType="java.util.Date">
+        select pih_reg_dt from pt_info_history order by pih_reg_dt desc limit 1
+    </select>
+</mapper>

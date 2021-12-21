@@ -60,9 +60,6 @@ pageEncoding="UTF-8"%>
                                         <span style="background-color: rgb(255,110,26);">보류</span>
                                     </c:if>
                                     <c:if test="${d.pi_status == 3}">
-                                        <span style="background-color: rgb(251,186,64);">폐지예정</span>
-                                    </c:if>
-                                    <c:if test="${d.pi_status == 4}">
                                         <span style="background-color: rgb(255,23,23);">폐지</span>
                                     </c:if>
                                 <td>${d.pi_time}</td>
@@ -108,8 +105,7 @@ pageEncoding="UTF-8"%>
                 <select id="pi_status">
                     <option value="1">운영</option>
                     <option value="2">보류</option>
-                    <option value="3">폐지예정</option>
-                    <option value="4">폐지</option>
+                    <option value="3">폐지</option>
                 </select>
             </div>
             <div class="btn_area">

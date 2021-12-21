@@ -1,6 +1,6 @@
 // ptlist.js
 $(function(){
-    $(".main_menu a:nth-child(3)").addClass("active")
+    $(".main_menu a:nth-child(4)").addClass("active")
     $("#add_ptlist").click(function(){
         $(".popup_wrap").addClass("open");
         $("#add_dep").css("display","inline-block");

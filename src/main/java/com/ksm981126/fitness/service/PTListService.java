@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ksm981126.fitness.data.PTListHistoryVo;
 import com.ksm981126.fitness.data.PTListVo;
 import com.ksm981126.fitness.mapper.PTListMapper;
 
@@ -72,6 +73,15 @@ public class PTListService {
         resultMap.put("status", true);
         resultMap.put("message", "회원 정보가 추가되었습니다");
 
+        Integer seq = mapper.selectLatesDataSeq();
+
+        PTListHistoryVo history =new PTListHistoryVo();
+        history.setPih_type("new");
+        history.setPih_pi_seq(seq);
+        String content = data.getPi_name()+"|"+data.getPi_ti_name()+"|"+data.getPi_time()+"|"+data.getPi_start_dt()+"|"+data.getPi_end_dt();
+        history.setPih_content(content);
+        mapper.insertPTHistory(history);
+
         return resultMap;
     }
 
@@ -80,6 +90,12 @@ public class PTListService {
         mapper.deletePTList(seq);
         resultMap.put("status", true);
         resultMap.put("message", "회원 정보가 삭제되었습니다.");
+
+        PTListHistoryVo history =new PTListHistoryVo();
+        history.setPih_pi_seq(seq);
+        history.setPih_type("delete");
+        mapper.insertPTHistory(history);
+
         return resultMap;
     }
     public Map<String,Object> getPTListInfoBySeq(Integer seq){
@@ -93,6 +109,14 @@ public class PTListService {
         mapper.updatePTList(data);     
         resultMap.put("status", true);
         resultMap.put("message", "수정되었습니다." );
+
+        PTListHistoryVo history =new PTListHistoryVo();
+        history.setPih_type("update");
+        history.setPih_pi_seq(data.getPi_seq());
+        String content = data.getPi_name()+"|"+data.getPi_ti_name()+"|"+data.getPi_time()+"|"+data.getPi_start_dt()+"|"+data.getPi_end_dt();
+        history.setPih_content(content);
+        mapper.insertPTHistory(history);
+
         return resultMap;
     }
 }

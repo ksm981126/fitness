@@ -28,4 +28,14 @@
         set pi_name=#{pi_name},pi_ti_seq=#{pi_ti_seq},pi_ti_name=#{pi_ti_name},pi_time=#{pi_time},pi_start_dt=#{pi_start_dt},pi_end_dt=#{pi_end_dt},pi_status=#{pi_status}
         where pi_seq=#{pi_seq}
     </update>
+    <select id="selectLatesDataSeq" resultType="java.lang.Integer">
+        select pi_seq from pt_info
+        order by pi_seq desc limit 1
+    </select>
+    <insert id="insertPTHistory">
+    INSERT INTO fitness_club_db.pt_info_history
+        (pih_type, pih_content,pih_pi_seq)
+    VALUES
+        (#{pih_type},#{pih_content},#{pih_pi_seq});
+    </insert>
 </mapper>

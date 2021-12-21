@@ -1,5 +1,5 @@
 $(function(){
-    $(".main_menu a:nth-child(1)").addClass("active")
+    $(".main_menu a:nth-child(2)").addClass("active")
     $("#add_member").click(function(){
         // alert("학과 추가 버튼");
         $(".popup_wrap").addClass("open");
