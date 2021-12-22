@@ -21,5 +21,5 @@ public interface PTListMapper {
     public Integer selectLatesDataSeq();
 
     public void insertPTHistory(PTListHistoryVo data);
-
+    public List<PTListVo> getPTListByKeyword(String keyword);
 }

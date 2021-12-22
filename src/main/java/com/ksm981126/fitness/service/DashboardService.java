@@ -24,6 +24,7 @@ public class DashboardService {
         trainerCntList.add(mapper.getTotalTrainerCnt());
         trainerCntList.add(mapper.getWorkTrainerCnt());
         trainerCntList.add(mapper.getDayoffTrainerCnt());
+        trainerCntList.add(mapper.getBreakTrainerCnt());
 
         List<Integer> ptCntList =new ArrayList<Integer>();
         ptCntList.add(mapper.getTotalPTCnt());
@@ -49,7 +50,7 @@ public class DashboardService {
         Map<String,Object> resultMap = new LinkedHashMap<String,Object>();
 
         resultMap.put("member", mapper.getMemberUpdateDate());
-
+        resultMap.put("trainer", mapper.getTrainerUpdateDate());
 
         resultMap.put("ptlist", mapper.getPTListUpdateDate());
 

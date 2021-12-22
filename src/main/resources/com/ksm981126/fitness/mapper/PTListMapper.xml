@@ -12,9 +12,9 @@
     </select>
     <insert id="addPTList">
     insert into pt_info(
-            pi_name,pi_ti_seq,pi_ti_name,pi_time,pi_start_dt,pi_end_dt,pi_status)
+            pi_name,pi_time,pi_start_dt,pi_end_dt,pi_status)
         values
-        (#{pi_name},#{pi_ti_seq},#{pi_ti_name},#{pi_time},
+        (#{pi_name},#{pi_time},
             #{pi_start_dt},#{pi_end_dt},#{pi_status})
     </insert>
     <delete id="deletePTList">
@@ -24,8 +24,7 @@
         select * from pt_info where pi_seq =#{seq}
     </select>
     <update id="updatePTList">
-        update pt_info
-        set pi_name=#{pi_name},pi_ti_seq=#{pi_ti_seq},pi_ti_name=#{pi_ti_name},pi_time=#{pi_time},pi_start_dt=#{pi_start_dt},pi_end_dt=#{pi_end_dt},pi_status=#{pi_status}
+        update pt_info set pi_name=#{pi_name},pi_time=#{pi_time},pi_start_dt=#{pi_start_dt},pi_end_dt=#{pi_end_dt},pi_status=#{pi_status},pi_mod_dt=NOW()
         where pi_seq=#{pi_seq}
     </update>
     <select id="selectLatesDataSeq" resultType="java.lang.Integer">
@@ -38,4 +37,7 @@
     VALUES
         (#{pih_type},#{pih_content},#{pih_pi_seq});
     </insert>
+    <select id="getPTListByKeyword" resultType="com.ksm981126.fitness.data.PTListVo">
+        select pi_seq,pi_name,pi_status,pi_time,pi_start_dt,pi_end_dt from pt_info where pi_name like #{keyword}
+    </select>
 </mapper>

@@ -19,7 +19,10 @@
         select count(*) from trainer_info where ti_status=1
     </select>
     <select id="getDayoffTrainerCnt" resultType="java.lang.Integer">
-        select count(*) from trainer_info where ti_status=0
+        select count(*) from trainer_info where ti_status=2
+    </select>
+    <select id="getBreakTrainerCnt" resultType="java.lang.Integer">
+        select count(*) from trainer_info where ti_status=3
     </select>
 
     <select id="getTotalPTCnt" resultType="java.lang.Integer">
@@ -50,6 +53,9 @@
 
     <select id="getMemberUpdateDate" resultType="java.util.Date">
         select mh_reg_dt from member_history order by mh_reg_dt desc limit 1
+    </select>
+    <select id="getTrainerUpdateDate" resultType="java.util.Date">
+        select tih_reg_dt from trainer_info_history order by tih_reg_dt desc limit 1
     </select>
     <select id="getPTListUpdateDate" resultType="java.util.Date">
         select pih_reg_dt from pt_info_history order by pih_reg_dt desc limit 1

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ksm981126.fitness.mapper.TrainerMapper">
+<select id="getTrainerInfo" resultType="com.ksm981126.fitness.data.TrainerVo">
+select ti_seq, pt_name,ti_name,ti_birth,ti_phone_num,ti_gen,ti_address,ti_start_dt,ti_reg_dt,ti_mod_dt,ti_status from
+    (
+        select a.*, b.pi_name as pt_name 
+        from trainer_info a left outer join pt_info b 
+        on a.ti_pi_seq =b.pi_seq
+    )c
+    <if test="type == 'subj'">
+        where pt_name like #{keyword}
+    </if>
+    <if test="type == 'name'">
+        where ti_name like #{keyword}
+    </if>
+        order by ti_seq desc 
+        limit 10 offset #{offset}
+    </select>
+    <select id="getTrainerCount" resultType="java.lang.Integer">
+    select count(*)from
+        (
+            select a.*, b.pi_name as pt_name 
+            from trainer_info a left outer join pt_info b 
+            on a.ti_pi_seq =b.pi_seq
+        )c
+    <if test="type == 'subj'">
+        where pt_name like #{keyword}
+    </if>
+    <if test="type == 'name'">
+        where ti_name like #{keyword}
+    </if>
+    </select>
+
+    <insert id="addTrainerInfo">
+    INSERT INTO fitness_club_db.trainer_info
+    (ti_pi_seq, ti_name, ti_gen,ti_birth, ti_address, ti_phone_num, ti_start_dt,ti_status)
+    VALUES
+    (#{ti_pi_seq}, #{ti_name}, #{ti_gen}, #{ti_birth}, #{ti_address}, #{ti_phone_num}, #{ti_start_dt},#{ti_status});
+    </insert>
+    <delete id="deleteTrainerInfo">
+        delete from trainer_info where ti_seq = #{seq}
+    </delete>
+    <select id="isExistTrainer" resultType="java.lang.Integer">
+        select count(*) from trainer_info where ti_seq =#{seq}
+    </select>
+
+    <select id="getTrainerInfoBySeq" resultType="com.ksm981126.fitness.data.TrainerVo">
+        select 
+            ti_seq, ti_pi_seq, ti_gen, ti_name,ti_birth,ti_start_dt,
+            ti_phone_num,ti_address,ti_status,pi_name as pt_name 
+        from 
+            trainer_info a left outer join pt_info b 
+        on 
+            a.ti_pi_seq =b.pi_seq
+        where 
+            ti_seq=#{seq}
+    </select>
+    <update id="updateTrainerInfo">
+        update
+            trainer_info
+        set
+        ti_pi_seq =#{ti_pi_seq},ti_name=#{ti_name},ti_gen=#{ti_gen},ti_birth=#{ti_birth},ti_phone_num=#{ti_phone_num},ti_address=#{ti_address},ti_status=#{ti_status},ti_start_dt=#{ti_start_dt},ti_mod_dt=NOW()
+        where ti_seq =#{ti_seq}
+    </update>
+
+    <insert id="insertTrainerHistory">
+        insert into trainer_info_history
+        (tih_ti_seq,tih_type,tih_content)
+        VALUES
+        (#{tih_ti_seq},#{tih_type},#{tih_content})
+    </insert>
+    <select id="getRecentAddedTrainerSeq" resultType="java.lang.Integer">
+        select ti_seq from trainer_info order by ti_seq desc limit 1
+    </select>
+</mapper>

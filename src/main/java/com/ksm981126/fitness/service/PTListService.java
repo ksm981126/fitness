@@ -49,11 +49,6 @@ public class PTListService {
         resultMap.put("message", "종목을 입력하세요");
         return resultMap;
     }
-    if(data.getPi_ti_name() == null || data.getPi_ti_name().equals("")){
-        resultMap.put("status", false);
-        resultMap.put("message", "강사이름을 입력하세요");
-        return resultMap;
-    }
     if(data.getPi_time() == null || data.getPi_time().equals("")){
         resultMap.put("status", false);
         resultMap.put("message", "강의시간을 입력하세요");
@@ -78,7 +73,7 @@ public class PTListService {
         PTListHistoryVo history =new PTListHistoryVo();
         history.setPih_type("new");
         history.setPih_pi_seq(seq);
-        String content = data.getPi_name()+"|"+data.getPi_ti_name()+"|"+data.getPi_time()+"|"+data.getPi_start_dt()+"|"+data.getPi_end_dt();
+        String content = data.getPi_name()+"|"+data.getPi_time()+"|"+data.getPi_start_dt()+"|"+data.getPi_end_dt();
         history.setPih_content(content);
         mapper.insertPTHistory(history);
 
@@ -113,11 +108,22 @@ public class PTListService {
         PTListHistoryVo history =new PTListHistoryVo();
         history.setPih_type("update");
         history.setPih_pi_seq(data.getPi_seq());
-        String content = data.getPi_name()+"|"+data.getPi_ti_name()+"|"+data.getPi_time()+"|"+data.getPi_start_dt()+"|"+data.getPi_end_dt();
+        String content = data.getPi_name()+"|"+data.getPi_time()+"|"+data.getPi_start_dt()+"|"+data.getPi_end_dt();
         history.setPih_content(content);
         mapper.insertPTHistory(history);
 
         return resultMap;
     }
+    public Map<String,Object> getPTListByKeyword(String keyword){
+        Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
+
+        if(keyword == null)keyword ="%%";
+        keyword="%"+keyword+"%";
+
+        List<PTListVo> list=mapper.getPTListByKeyword(keyword);
+        resultMap.put("status", true);
+        resultMap.put("list", list);
+        return resultMap;
+        }
 }
 

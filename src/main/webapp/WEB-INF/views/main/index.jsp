@@ -2,6 +2,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang>
 <head>
@@ -15,7 +16,7 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
     <main>
-        <h1><i class="fas fa-school"></i>회원관리</h1>
+        <h1><i class="fas fa-male"></i>회원관리</h1>
         <button id="add_member"><i class="fas fa-plus-circle"></i>회원 추가</button>
         <div class="content_area">
             <div class="menu_area">
@@ -37,15 +38,17 @@ pageEncoding="UTF-8"%>
                             <th>주소</th>
                             <th>PT 사용유무</th>
                             <th>사물함 사용유무</th>
-                            <th>시작일</th>
-                            <th>종료일</th>
+                            <th>멤버쉽 시작일</th>
+                            <th>멤버쉽 종료일</th>
+                            <th>등록일</th>
+                            <th>수정일</th>
                             <th>조작</th>
                         </tr>
                     </thead>
                     <tbody>
                         <c:if test="${data.total ==0}">
                             <tr>
-                                <td id="nodata" colspan="11"> 데이터가 없습니다.</td>
+                                <td id="nodata" colspan="13"> 데이터가 없습니다.</td>
                             </tr>
                         </c:if>
                         <c:forEach items="${data.list}" var="d">
@@ -60,6 +63,8 @@ pageEncoding="UTF-8"%>
                                 <td>${d.mi_locker_option == 0?"미사용":"사용"}</td>
                                 <td>${d.mi_start_dt}</td>
                                 <td>${d.mi_end_dt}</td>
+                                <td><fmt:formatDate value="${d.mi_reg_dt}" pattern="yyyy년 MM월 dd일 (EE) HH:mm:ss"/></td>
+                                <td><fmt:formatDate value="${d.mi_mod_dt}" pattern="yyyy년 MM월 dd일 (EE) HH:mm:ss"/></td>
                                 <td>
                                     <button class="modify_btn" data-seq="${d.mi_seq}"><i class="fas fa-pencil-alt"></i></button>
                                     <button class="delete_btn" data-seq="${d.mi_seq}"><i class="fas fa-trash"></i></button>
@@ -85,7 +90,7 @@ pageEncoding="UTF-8"%>
         <div class="popup" id="member_add">
             <div class="top_area">
                 <div class="ico">
-                    <i class="fas fa-school"></i>
+                    <i class="fas fa-male"></i>
                 </div>
                 <h2>회원 추가</h2>
                 <p>회원 정보를 입력해주세요.</p>

@@ -1,0 +1,79 @@
+/* trainer.css */
+.popup{
+    position: absolute; left: 50%; top: 50%; background-color: #fff;
+    margin-left: -250px; margin-top: -440px;
+    z-index: 999999; padding: 45px 0; width: 450px;
+    border-radius: 5px; box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+.popup .content_area{width: 90%;}
+.popup .content_area input,
+.popup .content_area button
+{width: calc(40% - 10px); padding: 0; margin: 0 auto; border: 1px solid #ccc;
+    font-size: 14px; font-weight: 400; padding: 5px 15px; box-sizing: border-box;
+    border-radius: 15px; margin-bottom: 7px; outline: none;
+}
+
+#pt_name,#ti_name, #ti_birth, #ti_gen,#ti_phone_num,#ti_address,#ti_start_dt,#ti_status
+{width: 80%; padding: 0; margin: 0 auto; border: 1px solid #ccc;
+    font-size: 14px; font-weight: 400; padding: 10px 20px; box-sizing: border-box;
+    border-radius: 50px; margin-bottom: 15px;
+}
+#ti_status {width: 95px; border-radius: 40px;
+    padding: 9px 20px;
+}
+#search_pt {width: calc(30% - 20px); margin: 5px;}
+#ti_gen {width: 95px; border-radius:40px; 
+    padding: 9px 20px;
+}
+
+
+
+#trainer_status {width: 150px; border-radius: 15px; padding: 5px 15px; border: 1px solid #ccc; padding: 5px 15px;
+}
+#search_type{border: 0; padding-left: 5px; margin-right: 5px; outline: none;}
+.pt_search{position: fixed; z-index: 9999999999;
+background-color: #fff; left: 50%; margin-left: -170px;
+top: 50%; margin-top: -325px; box-shadow: 0 0 5px rgba(0,0,0,0.1); width: 350px;
+display: none;
+}
+
+.dep_search_box{
+padding: 0 10px; font-size: 0; border-bottom: 1px solid #000;
+}
+.pt_search_box * {font-size: 18px;}
+.pt_search_box input{border: 0; padding: 0; margin: 0; outline: none; width: 95%;
+padding: 10px 0;}
+.pt_search_box button{border: 0; padding: 0; margin: 0; outline: none; cursor: pointer;
+position: absolute; right: 10px; top: 10px; background-color: transparent; color: #666;}
+.search_result{
+    max-height: 300px; overflow-y: scroll; height: 200px; 
+}
+.search_result ul li {padding: 10px;}
+.search_result a {text-decoration: none; color: #555; display: inline-block; vertical-align: middle;}
+.search_result a:hover {text-decoration: underline; color: #333; font-weight: 700;}
+.search_result span{font-size: 11px; display: inline-block; vertical-align: middle; padding: 5px 10px; margin-left: 10px;
+color: #fff; background-color: #333; border-radius: 20px;
+}
+.search_result .status1 {background-color: rgba(58,226,128);}
+.search_result .status2 {background-color: rgba(251,186,64);}
+.search_result .status3 {background-color: rgba(255,110,26);}
+.search_result .status4 {background-color: rgba(255,23,23);}
+
+#pt_search_close{border:0; background-color: #666; color: #fff;
+border-radius: 3px; width: 80px; height: 30px; cursor: pointer;}
+
+.trainer_status span{
+    display: inline-block; padding: 5px 10px; color: #fff;font-size: 14px;
+    border-radius: 3px;
+}
+
+#add_trainer {
+    position: absolute; right: 35px; top: 30px;
+    border: 0; background-color: #999; color: #fff;
+    width: 170px; height: 40px; border-radius: 5px; font-size: 15x;  font-weight: 300;
+    cursor: pointer; /*border-radius 테두리를 둥글게 만들어준다*/
+}
+#add_trainer i{margin-right: 5px;}
+#add_trainer:hover {background-color: #333;} /* hover 마우스 올렸을 때 색이 변함*/
+
+

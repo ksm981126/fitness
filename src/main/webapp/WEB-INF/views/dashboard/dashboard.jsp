@@ -22,7 +22,7 @@ pageEncoding="UTF-8"%>
         <h1>피트니스 클럽 관리 대시보드 (Fitness club management dashboard)</h1>
             <div class="content_area">
                 <div class="member_info">
-                    <h2><i class="fas fa-school"></i>회원 정보</h2>
+                    <h2><i class="fas fa-male"></i>회원 정보</h2>
                     <p> 총 등록 회원 : <span>${cnt.member[0]}명</span></p>
                     <p> PT 이용 회원 : <span>${cnt.member[1]}명</span></p>
                     <p> 락커룸 이용 회원 : <span>${cnt.member[2]}명</span></p>
@@ -33,7 +33,8 @@ pageEncoding="UTF-8"%>
                     <p> 총 등록 강사 : <span>${cnt.trainer[0]}명</span></p>
                     <p> 재직 중 강사 : <span>${cnt.trainer[1]}명</span></p>
                     <p> 휴직 중 강사 : <span>${cnt.trainer[2]}명</span></p>
-                    <p><i class="fas fa-clock"></i> 업데이트 날짜 : <span>2021-12-09 12:00:00</span></p>
+                    <p> 휴가 중 강사 : <span>${cnt.trainer[3]}명</span></p>
+                    <p><i class="fas fa-clock"></i> 업데이트 날짜 : <span><fmt:formatDate value="${update.trainer}" pattern="yyyy-MM-dd HH:mm:ss"/></span></p>
                 </div>
                 <div class="pt_info">
                     <h2><i class="fas fa-user-graduate"></i>PT수업 정보</h2>
@@ -45,7 +46,7 @@ pageEncoding="UTF-8"%>
                 </div>
                 <div class="pt_member_info">
                     <h2><i class="fas fa-chalkboard-teacher"></i>PT회원 정보</h2>
-                    <p> 총 등록 회원 : <span> ${cnt.ptmember[0]}건</span></p>
+                    <p> 총 등록 회원 : <span> ${cnt.ptmember[0]}명</span></p>
                     <!-- <p> 개강 : <span>${cnt.subject[1]}건</span></p>
                     <p> 폐강 : <span>${cnt.subject[2]}건</span></p>
                     <p> 종강 : <span>${cnt.subject[3]}건</span></p> -->

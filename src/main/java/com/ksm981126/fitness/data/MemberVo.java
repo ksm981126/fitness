@@ -1,5 +1,7 @@
 package com.ksm981126.fitness.data;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -14,4 +16,7 @@ public class MemberVo {
     private String mi_end_dt;
     private Integer mi_pt_option;
     private Integer mi_locker_option;
+
+    private Date mi_reg_dt;
+    private Date mi_mod_dt;
 }

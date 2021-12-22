@@ -2,6 +2,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang>
 <head>
@@ -20,7 +21,7 @@ pageEncoding="UTF-8"%>
         <div class="content_area">
             <div class="menu_area">
                 <div class="search_box">
-                    <input type="text" id="keyword" placeholder="검색어 입력"value="${data.keyword}">
+                    <input type="text" id="keyword" placeholder="종목 입력"value="${data.keyword}">
                     <button id="search_btn"><i class="fas fa-search"></i></button>
                 </div>
                 <button id="reset_btn" onclick="location.href='/ptlist'">초기화</button>
@@ -31,12 +32,12 @@ pageEncoding="UTF-8"%>
                         <tr>
                             <th>번호</th>
                             <th>종목</th>
-                            <th>강사ID</th>
-                            <th>강사이름</th>
                             <th>상태</th>
                             <th>시간</th>
-                            <th>시작일</th>
-                            <th>종료일</th>
+                            <th>수업 시작일</th>
+                            <th>수업 종료일</th>
+                            <th>등록일</th>
+                            <th>수정일</th>
                             <th>조작</th>
                         </tr>
                     </thead>
@@ -50,8 +51,6 @@ pageEncoding="UTF-8"%>
                             <tr>
                                 <td>${d.pi_seq}</td>
                                 <td>${d.pi_name}</td>
-                                <td>${d.pi_ti_seq}</td>
-                                <td>${d.pi_ti_name}</td>
                                 <td class="pt_status">
                                     <c:if test="${d.pi_status == 1}">
                                         <span style="background-color: rgb(17,226,27);">운영</span>
@@ -65,6 +64,8 @@ pageEncoding="UTF-8"%>
                                 <td>${d.pi_time}</td>
                                 <td>${d.pi_start_dt}</td>
                                 <td>${d.pi_end_dt}</td>
+                                <td><fmt:formatDate value="${d.pi_reg_dt}" pattern="yyyy년 MM월 dd일 (EE) HH:mm:ss"/></td>
+                                <td><fmt:formatDate value="${d.pi_mod_dt}" pattern="yyyy년 MM월 dd일 (EE) HH:mm:ss"/></td>
                                 <td>
                                     <button class="modify_btn" data-seq="${d.pi_seq}"><i class="fas fa-pencil-alt"></i></button>
                                     <button class="delete_btn" data-seq="${d.pi_seq}"><i class="fas fa-trash"></i></button>
@@ -97,8 +98,6 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="content_area">
                 <input type="text" id="pi_name" placeholder="수업 명">
-                <input type="text" id="pi_ti_seq" placeholder="강사ID(YYYYMMDD00)">
-                <input type="text" id="pi_ti_name" placeholder="강사 명">
                 <input type="text" id="pi_time" placeholder="PT시간(X요일 hh:mm~hh:mm)">
                 <input type="text" id="pi_start_dt" placeholder="시작일(YYYY-MM-DD)">
                 <input type="text" id="pi_end_dt" placeholder="종료일(YYYY-MM-DD)">

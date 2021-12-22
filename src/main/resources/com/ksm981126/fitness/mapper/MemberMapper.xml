@@ -26,7 +26,7 @@
     </select>
     <update id="updateMember">
         update member_info
-        set mi_name=#{mi_name},mi_birth=#{mi_birth},mi_gen=#{mi_gen},mi_phone_num=#{mi_phone_num},mi_address=#{mi_address},mi_pt_option=#{mi_pt_option},mi_locker_option=#{mi_locker_option},mi_start_dt=#{mi_start_dt},mi_end_dt=#{mi_end_dt}
+        set mi_name=#{mi_name},mi_birth=#{mi_birth},mi_gen=#{mi_gen},mi_phone_num=#{mi_phone_num},mi_address=#{mi_address},mi_pt_option=#{mi_pt_option},mi_locker_option=#{mi_locker_option},mi_start_dt=#{mi_start_dt},mi_end_dt=#{mi_end_dt},mi_mod_dt=NOW()
         where mi_seq=#{mi_seq}
     </update>
     <select id="selectLatesDataSeq" resultType="java.lang.Integer">

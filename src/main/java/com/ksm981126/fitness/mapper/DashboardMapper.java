@@ -13,6 +13,7 @@ public interface DashboardMapper {
     public Integer getTotalTrainerCnt();
     public Integer getWorkTrainerCnt();
     public Integer getDayoffTrainerCnt();
+    public Integer getBreakTrainerCnt();
 
     public Integer getTotalPTCnt();
     public Integer getActivePTCnt();
@@ -25,5 +26,6 @@ public interface DashboardMapper {
     // public Integer getFinishPTmemberCnt();
 
     public Date getMemberUpdateDate();
+    public Date getTrainerUpdateDate();
     public Date getPTListUpdateDate();
 }

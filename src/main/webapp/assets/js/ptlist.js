@@ -11,7 +11,6 @@ $(function(){
     $("#add_dep").click(function(){
         if(confirm("수업을 등록하시겠습니까?")== false) return;
         let pi_name = $("#pi_name").val();
-        let pi_ti_seq = $("#pi_ti_seq").val();
         let pi_ti_name = $("#pi_ti_name").val();
         let pi_time = $("#pi_time").val();
         let pi_start_dt = $("#pi_start_dt").val();
@@ -20,7 +19,6 @@ $(function(){
 
         let data ={
             pi_name:pi_name,
-            pi_ti_seq:pi_ti_seq,
             pi_ti_name:pi_ti_name,
             pi_time:pi_time,
             pi_start_dt:pi_start_dt,
@@ -45,7 +43,6 @@ $(function(){
         if(confirm("취소하시겠습니까?\n(입력된 정보는 저장되지 않습니다.)") == false)return;
 
         $("#pi_name").val("");
-        $("#pi_ti_seq").val("");
         $("#pi_ti_name").val("");
         $("#pi_time").val("");
         $("#pi_start_dt").val("");
@@ -85,7 +82,6 @@ $(function(){
             success:function(r){
                 console.log(r);
                 $("#pi_name").val(r.data.pi_name);
-                $("#pi_ti_seq").val(r.data.pi_ti_seq);
                 $("#pi_ti_name").val(r.data.pi_ti_name);
                 $("#pi_time").val(r.data.pi_time);
                 $("#pi_start_dt").val(r.data.pi_start_dt);
@@ -99,7 +95,6 @@ $(function(){
         if(confirm("수정하시겠습니까?")==false)return;
 
         let pi_name = $("#pi_name").val();
-        let pi_ti_seq = $("#pi_ti_seq").val();
         let pi_ti_name = $("#pi_ti_name").val();
         let pi_time = $("#pi_time").val();
         let pi_start_dt = $("#pi_start_dt").val();
@@ -109,7 +104,6 @@ $(function(){
         let data ={
             pi_seq: modify_data_seq,
             pi_name:pi_name,
-            pi_ti_seq:pi_ti_seq,
             pi_ti_name:pi_ti_name,
             pi_time:pi_time,
             pi_start_dt:pi_start_dt,
